@@ -3,6 +3,7 @@ import {Container} from "react-bootstrap"
 import NavbarA from "./components/NavbarA"
 
 import HeadarA from "./components/Headar"
+import CatagoryA from "./components/Catagory"
 
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
       <NavbarA />
       <Container>
         <HeadarA/>
+        <CatagoryA/>
       </Container>
     </div>
   );
