@@ -1,0 +1,17 @@
+.bg-W{
+    background-color: #f8f8f8;
+}
+
+.img-w-h{
+    width: 300px;
+    height: 200px;
+    border-radius: 20%;
+}
+
+.price-S{
+    width: 80px;
+    text-align: center;
+    border: 2px solid #198754;
+    border-radius: 10px;
+    font-family:emoji;
+}
