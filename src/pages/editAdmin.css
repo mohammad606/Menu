@@ -1,0 +1,78 @@
+.contEdit{
+    background-color: #171718;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formData {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom:2px dashed ;
+}
+
+.inpData {
+    margin-bottom: 10px;
+    width: inherit;
+}
+
+.labData {
+    display: inline-block;
+    border-top: 2px solid #d77b03;
+    width: 107%;
+    text-align: center;
+    margin-top: 10px;
+    padding-top: 10px;
+    color: #d77b03;
+    font-size: larger;
+    font-family: monospace;
+}
+
+
+.imgCard {
+    width: 100%;
+    height: 100%;
+    border-radius: 20%;
+}
+
+.contenarImg {
+    width: 46%;
+    padding: 5px;
+}
+
+.contenartitel {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 5px;
+    width: 54%;
+    text-align: end;
+    color: #fff;
+}
+
+.price-S {
+    text-align: center;
+    border: 2px solid #d77b03;
+    border-radius: 10px;
+    font-family: emoji;
+    height: -moz-fit-content;
+    height: fit-content;
+    padding: 5px;
+    font-size: 16px;
+    width: 100%;
+}
+
+
+.Col {
+    margin-top: 10px;
+    margin-right: 2px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+}
+.contenartitel h3{
+    color: #bc955a;
+
+}

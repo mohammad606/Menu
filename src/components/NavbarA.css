@@ -1,7 +1,19 @@
 .colorG{
-    color: #198754;
+    color: #d77b03;
   }
 
 .colorW{
     color: white;
   }
+
+.iconName{
+  display: flex;
+  align-items: center;
+  height: 50px;
+}
+.navbar{
+  background-color: #171718 !important;
+}
+.navbar-nav{
+  --bs-nav-link-hover-color:#d77b03
+}
