@@ -6,7 +6,7 @@ const About = ()=>{
         <div className="contAbout">
             <div className="call">
                 <h3>To communicate</h3>
-                <span>Fone: 01050923293</span>
+                <span>Phone : 01050923293</span>
                 <h3>Stay Connected</h3>
             </div>
             <div className="location">

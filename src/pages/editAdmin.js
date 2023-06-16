@@ -31,7 +31,7 @@ function EditD() {
         }).then((result) => {
             if (result.isConfirmed) {
                 const uuid = uid()
-                set(ref(data, `${uuid}`), {
+                set(ref(data,`food/${uuid}`),{
                     name: name,
                     titel: titel,
                     price: price,
@@ -39,7 +39,7 @@ function EditD() {
                     img: img
                 })
             }
-            return getData()
+
         })
 
 
@@ -51,11 +51,8 @@ function EditD() {
     //-------------------------------------------------------- start get data
     const [coontact, setContact] = useState([])
     useEffect(() => {
-        getData()
-    }, [])
-    function getData() {
         const fetchData = async () => {
-            const res = await fetch("https://food-list-bdb10-default-rtdb.firebaseio.com/.json");
+            const res = await fetch("https://food-list-bdb10-default-rtdb.firebaseio.com/food.json");
             const dat = await res.json();
             const ObjData = { ...dat };
             const coontactData = []
@@ -72,7 +69,8 @@ function EditD() {
             setContact(coontactData)
         }
         fetchData()
-    }
+    }, [writ(),deleteData()])
+
     //-------------------------------------------------------- end get data
 
     //-------------------------------------------------------- start delete data
@@ -87,10 +85,9 @@ function EditD() {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                remove(ref(data, `${id}`))
+                remove(ref(data, `food/${id}`))
             }
         })
-        return getData()
     }
 
     //-------------------------------------------------------- end delete data
@@ -133,7 +130,7 @@ function EditD() {
                 {coontact.map((e) => {
                     return (
                         <Row>
-                            <motion.div key={e.id} sm={12} className='Col mb-3' initial={{opacity:0 , scale:0}} whileInView={{opacity:1 , scale:1}} transition={{duration:0.6}}>
+                            <motion.div key={e.id} sm={12} className='Col mb-3' initial={{ opacity: 0, scale: 0 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6 }}>
                                 <div className='contenarImg'>
                                     <img className='imgCard' src={e.img} alt="fdh" />
                                 </div>

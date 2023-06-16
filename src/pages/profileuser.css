@@ -1,0 +1,60 @@
+.contprofile{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 650px;
+    color: #bc955a;  
+    position: relative;
+}
+
+.contDataUser{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,20%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    padding: 40px;
+    background: lab(14 -1.06 -3.31 / 0.51);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+    border-radius: 10px;
+}
+
+.contDataUser h2{
+    position: relative;
+    right: 35%;
+    bottom: 20px;
+}
+
+.editData,
+.contDataUser div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.editData form{
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    align-items: end;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+.editData .btn-primary {
+    color: #fff !important;
+    --bs-btn-bg: 0;
+    --bs-btn-border-color:#d77b03;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #d77b03;
+    --bs-btn-hover-border-color: #d77b03;
+  }
+.btn-primary {
+    color: #fff !important;
+    --bs-btn-bg: 0;
+    margin-top: 5px;
+  }

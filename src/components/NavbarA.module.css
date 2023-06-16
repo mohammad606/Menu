@@ -1,0 +1,21 @@
+.colorG{
+    color: #d77b03;
+  }
+
+.colorW{
+    color: white;
+    padding-right: 5px;
+  }
+  .colorW:hover{
+    color: #d77b03 !important;
+  }
+.iconName{
+  display: flex;
+  align-items: center;
+  height: 50px;
+}
+.navbar{
+  background-color: #171718 !important;
+  text-align: center;
+  margin: 0;
+}

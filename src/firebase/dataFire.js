@@ -3,7 +3,7 @@ import 'firebase/compat/database'
 import 'firebase/compat/firestore'
 import 'firebase/compat/analytics'
 import { getDatabase } from 'firebase/database';
-import {getAuth } from "firebase/auth"
+import {getAuth,GoogleAuthProvider } from "firebase/auth"
 
 const firebaseConfig = {
   apiKey: "AIzaSyAufHNdn_PJWfE6ijKqnfhGLtw5knY7VCM",
@@ -21,6 +21,6 @@ firebase.initializeApp(firebaseConfig)
 
 export const app = firebase.initializeApp(firebaseConfig)
 export const data = getDatabase(app)
-
 export const auth = getAuth(app)
+export const provider = new GoogleAuthProvider()
 export default firebase
