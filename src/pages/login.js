@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import "./login-combletprofile.css"
 import { useState } from "react";
-import { auth, provider } from "../firebase/dataFire"
+import { auth, data, provider } from "../firebase/dataFire"
 import { signInWithPopup, signInWithEmailAndPassword } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
-
-
+import {  ref, onValue } from "firebase/database";
+import { onAuthStateChanged } from "firebase/auth";
+import NavbarA from "../components/NavbarA"
 
 
 
@@ -28,26 +29,45 @@ let Login = () => {
     }
     // ---------------------------------------------------------end send data for auth
     // --------------------------------------------------------start log in with google
-    const [emailGoogle, setGoogle] = useState('')
-
+    const [userDataId, setUserDataId] = useState([])
+    useEffect((e) => {
+        onValue(ref(data, 'users/'), (snapshot) => {
+            const db = snapshot.val();
+            let arrayUsers = Object.keys(db);
+            setUserDataId(arrayUsers)
+        });
+    }, [])
+    console.log(userDataId)
 
     const handlesingin = () => {
         signInWithPopup(auth, provider)
             .then((data) => {
-                setGoogle(data.user.email)
                 localStorage.setItem('emailGoogle', data.user.email)
                 window.history.forward()
-                return nav('/competeprofileuser')
+
+                let userId = localStorage.getItem('userId')
+                console.log(userId)
+                setTimeout(() => {
+                    if (userDataId.includes(userId)) {
+                        return nav('/')
+                    } else {
+                        return nav("/competeprofileUser")
+                    }
+                }, 1000);
             })
 
     }
     useEffect(() => {
-        setGoogle(localStorage.getItem('emailGoogle'))
-
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                window.localStorage.setItem('userId', user.uid)
+            }
+        });
     }, [])
 
     // --------------------------------------------------------end log in with google
-    return (
+    return (<>
+        <NavbarA />
         <div className="logBody">
             <img src="https://i.postimg.cc/brKZX01n/1306497.jpg" alt="" />
             <div className=" loginBox">
@@ -66,12 +86,12 @@ let Login = () => {
                     </Link>
 
                     <button className="googleSing" id="aSubmit" onClick={handlesingin}>
-                    <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/> Sign in with google
+                        <img className="google-icon" alt="/" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" /> LogIn\SignIn with google
                     </button>
 
                 </form>
             </div>
-        </div>
+        </div></>
     )
 }
 export default Login

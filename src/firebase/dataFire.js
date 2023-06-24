@@ -4,6 +4,7 @@ import 'firebase/compat/firestore'
 import 'firebase/compat/analytics'
 import { getDatabase } from 'firebase/database';
 import {getAuth,GoogleAuthProvider } from "firebase/auth"
+import { getStorage } from 'firebase/storage';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAufHNdn_PJWfE6ijKqnfhGLtw5knY7VCM",
@@ -19,8 +20,10 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig)
 
+
 export const app = firebase.initializeApp(firebaseConfig)
 export const data = getDatabase(app)
 export const auth = getAuth(app)
+export const storage = getStorage(app)
 export const provider = new GoogleAuthProvider()
 export default firebase

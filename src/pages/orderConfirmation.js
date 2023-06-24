@@ -1,39 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { data } from "../firebase/dataFire"
-import { ref, onValue } from "firebase/database";
+import React, { useState } from "react";
 import "./orderConfirmation.css"
-
-
+import NavbarA from "../components/NavbarA"
+import { uid } from "uid";
+import { Button } from "react-bootstrap";
+import Fetch from "../firebase/fetchData"
 
 const Confirmation = () => {
 // --------------------------------------------------------------------start get data basket user
 
     const idUser = localStorage.getItem('userId')
     const [basketOrder, seFoodList] = useState()
-    const getFoodList = () => {
-        try {
-            const db = ref(data, `users/Basket/${idUser}`)
-            onValue(db, (e) => {
-                const dataFood = { ...e.val() }
-                const foodListData = []
-                for (const key in dataFood) {
-                    foodListData.push({
-                        key: key,
-                        qtn: dataFood[key].qtn,
-                        name: dataFood[key].name,
-                        price: dataFood[key].price,
-                        PriceAll: dataFood[key].PriceAll,
-                    })
-                    seFoodList(foodListData)
-                }
-            })
-        } catch (error) {
-            console.log(error)
-        }
-    }
-    useEffect(() => {
-        getFoodList()
-    }, [])
+    Fetch(`users/Basket/${idUser}` , seFoodList)
 
 // --------------------------------------------------------------------end get data basket user
 // ---------------------------------------------------------------------start calc all price basket  
@@ -50,10 +27,14 @@ const Confirmation = () => {
     }
     handelPriceAll()
 // ---------------------------------------------------------------------start calc all price basket 
+// --------------------------------------------------------------------sart create namber for order
+    let invoiceNum = parseFloat(uid()) 
+// ---------------------------------------------------------------------end create namber for order
 
-    // ----------------------------------------------------------------------------------------
-    return (<>
+    return (<div className="d-flex flex-column position-relative">
+          <NavbarA />
         <table className="orderTitle">
+            <caption>invoice number : {invoiceNum}</caption>
             <thead>
                 <tr>
                     <td>Item</td>
@@ -81,9 +62,9 @@ const Confirmation = () => {
             </tfoot>
         </table>
 
+        <Button className="PaymentConfirmationBtn position-absolute " variant="success">Payment ConfirmationBtn</Button>
 
-
-    </>
+    </div>
     )
 
 

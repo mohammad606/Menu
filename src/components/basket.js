@@ -6,38 +6,14 @@ import { remove, ref, onValue } from "firebase/database";
 import { data } from "../firebase/dataFire"
 import Swal from 'sweetalert2';
 import { Nav } from "react-bootstrap";
-
+import Fetch from "../firebase/fetchData"
 
 
 const Basket = () => {
     // ----------------------------------------------------------------start get data food
     const idUser = localStorage.getItem('userId')
     const [foodList, seFoodList] = useState()
-    const getFoodList = () => {
-        try {
-            const db = ref(data, `food/`)
-            onValue(db, (e) => {
-                const dataFood = { ...e.val() }
-                const foodListData = []
-                for (const key in dataFood) {
-                    foodListData.push({
-                        key: key,
-                        name: dataFood[key].name,
-                        price: dataFood[key].price,
-                        titel: dataFood[key].titel,
-                        catagory: dataFood[key].catagory,
-                        img: dataFood[key].img
-                    })
-                    seFoodList(foodListData)
-                }
-            })
-        } catch (error) {
-            console.log(error)
-        }
-    }
-    useEffect(() => {
-        getFoodList()
-    }, [])
+    Fetch('food' , seFoodList)
     // ------------------------------------------------------------------end get data food
     // -------------------------------------------------------start get data Basket of user   
     const [idItem, setUserBasket] = useState()
@@ -103,7 +79,11 @@ const Basket = () => {
                 <div className='contTitleBasket'>
                     <h3 className="text-centar">{e.name}</h3>
                     <p className='priceBasket'>السعر : {e.price}</p>
-                    <button onClick={() => deleteData(e.key)} className="basketBtn">ازالة من الأوردلر</button>
+                    <button onClick={(f) =>{ 
+                        deleteData(e.key)
+                        f.preventDefault()
+                        }
+                        } className="basketBtn">ازالة من الأوردلر</button>
 
                 </div></div>
             ))}</form></>

@@ -3,19 +3,28 @@
   }
 
 .colorW{
-    color: white;
+    color: white !important;
     padding-right: 5px;
   }
-  .colorW:hover{
-    color: #d77b03 !important;
-  }
+
 .iconName{
   display: flex;
   align-items: center;
   height: 50px;
 }
 .navbar{
-  background-color: #171718 !important;
+  background-color: #000000c4 !important;
   text-align: center;
   margin: 0;
+  z-index: 5;
+  -webkit-box-shadow: -1px 32px 15.5px -1px #000000c2 !important;
+-moz-box-shadow: -1px 32px 15.5px -1px #000000c2 !important;
+box-shadow: -1px 32px 15.5px -1px #000000c2 !important;
+}
+.navbar-nav{
+  --bs-nav-link-hover-color: #d77b03;
+}
+
+.colorW:hover{
+  color: #d77b03 !important;
 }

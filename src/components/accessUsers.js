@@ -30,10 +30,10 @@ const AccessUsers = () => {
     return (
       <Routes>
         <Route exect path="/" element={<Home/>} />
-        <Route path="/competeprofileuser" Component={CompeteProfileUser} />
         <Route path="/profileuser" Component={ProfileUser} />
         <Route path="/basket" element={<Basket/>}/>
         <Route path="/orderConfirmation" Component={Confirmation}/>
+        <Route path="/competeprofileuser" element={<CompeteProfileUser/>} />
       </Routes>
     )
   }

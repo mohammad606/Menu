@@ -1,13 +1,14 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap"
 import "./Headar.css"
-
+import Cards from "./cards"
 
 
 function HeadarA() {
     return (
         <Row className="font">
             <Col sm="12" className="justify-content-center text-center">
+                
                 <div className="colorHedar title">
                     Big Big
                 </div>

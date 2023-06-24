@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./login-combletprofile.css"
 import { data } from "../firebase/dataFire"
 import { set, ref } from "firebase/database"
-import { uid } from 'uid';
+
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
@@ -18,13 +18,14 @@ let CompeteProfileUser = () => {
     const [build, setBuild] = useState("")
 
 
+
     const nav = useNavigate()
     const writ = (e) => {
         e.preventDefault()
-        if (!userName || !phonUser || !cityUser || !street || !build ) {
+        if (!userName || !phonUser || !cityUser || !street || !build) {
             alert('Plaese provide value in each input field')
         } else {
-            const uuid = uid()
+            const uuid = localStorage.getItem('userId')
             set(ref(data, `users/${uuid}`), {
                 uuid,
                 userName: userName,
@@ -33,7 +34,7 @@ let CompeteProfileUser = () => {
                 street: street,
                 build: build
             })
-            window.localStorage.setItem('userId', uuid)
+
             window.localStorage.setItem('userName', userName)
             nav('/')
         }
@@ -71,7 +72,7 @@ let CompeteProfileUser = () => {
                     <Button onClick={writ} className="btn" id="aSubmit" >
                         Submit
                     </Button>
-                    
+
                 </form>
             </div>
         </div>

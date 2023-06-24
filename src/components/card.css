@@ -1,0 +1,28 @@
+.carousel {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    bottom: 66px;
+    -webkit-box-shadow: -1px 32px 15.5px -1px #000000c2 !important;
+    -moz-box-shadow: -1px 32px 15.5px -1px #000000c2 !important;
+    box-shadow: -1px 32px 15.5px -1px #000000c2 !important;
+}
+    
+
+.carousel-inner {
+    height: 525px !important;
+}
+
+.contCardImg {
+    height: 100% !important;
+
+}
+
+.contCardImg img {
+    height: 100% !important;
+   position: relative;
+   border-radius: 0px 0px 40px 40px;
+   -webkit-box-shadow: -1px 32px 15.5px -1px #000000c2 !important;
+   -moz-box-shadow: -1px 32px 15.5px -1px #000000c2 !important;
+   box-shadow: -1px 32px 15.5px -1px #000000c2 !important;
+}

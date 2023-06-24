@@ -29,7 +29,21 @@
   width: 30%;
 }
 
+.containarHome .BasketCanvas{
+  background-color: #f0f8ff00 !important;
+  padding: initial !important;
+}
 
+.offcanvas-body a{
+     border-radius: 20px;
+     border: 2px solid black;
+
+}
+.offcanvas-body a:hover{
+  border-radius: 20px;
+  border: 2px solid #d77b03;
+  background-color: #d77b03;
+}
 .font {
   font-family: inherit;
   color: black;
@@ -115,6 +129,13 @@
   bottom: 0;
 }
 
+.contTitle .dropdown-toggle{
+  background-color: #d77b03 !important;
+  border: 0 !important;
+}
+.contTitle .dropdown-toggle:hover{
+  background-color: #171718 !important;
+}
 @media(max-width: 960px) {
   .contCard {
     flex-direction: column;
@@ -191,5 +212,13 @@
     width: 50px;
     height: 30px;
     z-index: 5;
-    padding: 0px;
+    border: 2px solid #fff !important;
+}
+
+.containarHome .btn-warning {
+  background-color: #ffc10700 !important;
+}
+.containarHome .btn-warning:hover {
+  background-color: #ffc107 !important;
+  color: #171718 !important;
 }

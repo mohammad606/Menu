@@ -1,11 +1,10 @@
 import React from "react";
 import { Button, Container, Form } from "react-bootstrap";
-
+import NavbarA from "../components/NavbarA"
 import 'firebase/compat/database'
 import "./profileuser.css"
 import { useState } from "react";
-import { useEffect } from "react";
-
+import Fetch from "../firebase/fetchData"
 
 import { data } from '../firebase/dataFire';
 import { ref, update } from "firebase/database";
@@ -13,34 +12,20 @@ import { ref, update } from "firebase/database";
 const ProfileUser = () => {
     // ----------------------------------------------------------------------start get data of user
     const [dataUser, setcoontactData] = useState([])
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const idUser = localStorage.getItem('userId')
-            const res = await fetch(`https://food-list-bdb10-default-rtdb.firebaseio.com/users.json`);
-            const dat = await res.json();
-            const ObjData = { ...dat };
-            const coontactData = []
-            if (ObjData) {
-                coontactData.push({
-                    userName: ObjData[idUser].userName,
-                    emaluser: ObjData[idUser].emaluser,
-                    phonUser: ObjData[idUser].phonUser,
-                    cityUser: ObjData[idUser].cityUser,
-                    street: ObjData[idUser].street,
-                    build: ObjData[idUser].build
-                })
-            }
-            setcoontactData(coontactData)
-        }
-        fetchData()
-    }, [])
+    Fetch("users" ,setcoontactData )
     // ------------------------------------------------------------------------end get data of user
-
-
-
-    // // ---------------------------------------------------------- start hundle edite data of user
+    // -------------------------------------------------------------------start filter profile user
     const idUser = localStorage.getItem('userId')
+    const Filter = (e,index) => {
+        if ( e.key === idUser){
+            return dataUser[index]
+        }else{
+            console.log("error")
+        }
+    }
+    // ---------------------------------------------------------------------end filter profile user
+    // // ---------------------------------------------------------- start hundle edite data of user
+    
     const [phoneIn, setPhoneIn] = useState("")
     const [cityIn, setCityIn] = useState("")
     const [streetIn, setStreetIn] = useState("")
@@ -128,9 +113,10 @@ const ProfileUser = () => {
 
     return (
         <>
+              <NavbarA />
             <Container>
                 <div className="contprofile">
-                    {dataUser.map((e) => (
+                    {dataUser?.filter(Filter).map((e) => (
                         <div className="contDataUser">
                             <h2>My Profile</h2>
                             <div>
