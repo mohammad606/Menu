@@ -11,7 +11,7 @@ const About = ()=>{
             </div>
             <div className="location">
                 <h3>Location</h3>
-                <span>Egybt , Zayed , th16</span>
+                <span>Egypt , Zayed , th16</span>
                 <span>Privacy Policy</span>
                 <p>Let's eat</p>
             </div>
